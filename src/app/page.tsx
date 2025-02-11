@@ -29,38 +29,40 @@ export default function Chat() {
       <div className="text-center text-4xl mb-12">
         <h1 className={roboto.className}>Rob's A.I. Chatbot</h1>
       </div>
-      <ul
-        ref={chatParent}
-        className="h-32 p-4 flex-grow bg-muted/50 rounded-lg overflow-y-auto flex flex-col gap-4 bg-white border-gray-400 border-1 shadow-md"
-      >
-        {messages.map((m, index) =>
-          m.role === 'user' ? (
-            <li key={`user-${index}`} className="flex flex-row">
-              <div className="rounded-xl p-4 bg-gray-800 shadow-md flex">
-                <p className="text-primary"> {m.content}</p>
-              </div>
-            </li>
-          ) : (
-            <li key={`ai-${index}`} className="flex flex-row-reverse">
-              <div className="rounded-xl p-4 bg-background shadow-md flex w-3/4">
-                <p className="text-primary whitespace-pre-wrap">
-                  <span className="font-bold ">Answer: </span>
-                  {m.content}
-                </p>
-              </div>
-            </li>
-          ),
-        )}
-      </ul>
+      <div className='h-screen mx-4'>
+        <ul
+          ref={chatParent}
+          className="h-full p-4 flex-grow bg-muted/50 rounded-lg overflow-y-auto flex flex-col gap-4 bg-white border-gray-400 border-1 shadow-m"
+        >
+          {messages.map((m, index) =>
+            m.role === 'user' ? (
+              <li key={`user-${index}`} className="flex flex-row">
+                <div className="rounded-xl p-4 bg-gray-800 shadow-md flex">
+                  <p className="text-primary"> {m.content}</p>
+                </div>
+              </li>
+            ) : (
+              <li key={`ai-${index}`} className="flex flex-row-reverse">
+                <div className="rounded-xl p-4 bg-background shadow-md flex w-3/4">
+                  <p className="text-primary whitespace-pre-wrap">
+                    <span className="font-bold ">Answer: </span>
+                    {m.content}
+                  </p>
+                </div>
+              </li>
+            ),
+          )}
+        </ul>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          className="fixed dark:bg-zinc-900 bottom-0 w-full max-w-2xl p-2 mb-8 border border-zinc-300 dark:border-zinc-800 rounded shadow-xl"
-          value={input}
-          placeholder="Say something..."
-          onChange={handleInputChange}
-        />
-      </form>
+        <form onSubmit={handleSubmit}>
+          <input
+            className="dark:bg-zinc-900 bottom-0 max-w-2xl p-2 border border-zinc-300 dark:border-zinc-800 rounded shadow-xl w-full mt-4"
+            value={input}
+            placeholder="Say something..."
+            onChange={handleInputChange}
+          />
+        </form>
+      </div>
     </div>
   )
 }
