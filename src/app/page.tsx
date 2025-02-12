@@ -25,7 +25,16 @@ export default function Chat() {
   })
 
   return (
-    <div className="flex flex-col w-full h-screen max-h-dvh" style={{ backgroundImage: "url(/digital-6228020_1920.jpg)" }}>
+    <div
+      className="flex flex-col w-full h-screen max-h-dvh"
+      style={{
+        backgroundImage: 'url(/digital-6228020_1920.jpg)',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        minHeight: '100vh',
+      }}
+    >
       <div className=" text-center text-4xl my-12 max-w-3xl mx-auto p-4">
         <h1 className={roboto.className}>Rob's A.I. Chatbot</h1>
       </div>
