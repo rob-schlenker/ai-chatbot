@@ -12,7 +12,8 @@ const roboto = Roboto({
 })
 
 export default function Chat() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat({
+  
+  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
     maxSteps: 5,
   })
   const chatParent = useRef<HTMLUListElement>(null)
@@ -81,6 +82,7 @@ export default function Chat() {
               Please ask a question below...
             </li>
           ) : (
+            
             messages.map((m, index) =>
               m.role === 'user' ? (
                 <li key={`user-${index}`} className="flex flex-row">
@@ -99,57 +101,20 @@ export default function Chat() {
                 </li>
               ),
             )
+            
           )}
-          {/* <p className="text-black">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-            enim ut, a eos, distinctio nesciunt quisquam magni, dolore eligendi
-            obcaecati officiis nobis provident voluptates eveniet quis est
-            labore excepturi soluta?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-            enim ut, a eos, distinctio nesciunt quisquam magni, dolore eligendi
-            obcaecati officiis nobis provident voluptates eveniet quis est
-            labore excepturi soluta?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-            enim ut, a eos, distinctio nesciunt quisquam magni, dolore eligendi
-            obcaecati officiis nobis provident voluptates eveniet quis est
-            labore excepturi soluta?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-            enim ut, a eos, distinctio nesciunt quisquam magni, dolore eligendi
-            obcaecati officiis nobis provident voluptates eveniet quis est
-            labore excepturi soluta?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-            enim ut, a eos, distinctio nesciunt quisquam magni, dolore eligendi
-            obcaecati officiis nobis provident voluptates eveniet quis est
-            labore excepturi soluta?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-            enim ut, a eos, distinctio nesciunt quisquam magni, dolore eligendi
-            obcaecati officiis nobis provident voluptates eveniet quis est
-            labore excepturi soluta?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-            enim ut, a eos, distinctio nesciunt quisquam magni, dolore eligendi
-            obcaecati officiis nobis provident voluptates eveniet quis est
-            labore excepturi soluta?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-            enim ut, a eos, distinctio nesciunt quisquam magni, dolore eligendi
-            obcaecati officiis nobis provident voluptates eveniet quis est
-            labore excepturi soluta?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-            enim ut, a eos, distinctio nesciunt quisquam magni, dolore eligendi
-            obcaecati officiis nobis provident voluptates eveniet quis est
-            labore excepturi soluta?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-            enim ut, a eos, distinctio nesciunt quisquam magni, dolore eligendi
-            obcaecati officiis nobis provident voluptates eveniet quis est
-            labore excepturi soluta?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-            enim ut, a eos, distinctio nesciunt quisquam magni, dolore eligendi
-            obcaecati officiis nobis provident voluptates eveniet quis est
-            labore excepturi soluta?
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur
-            enim ut, a eos, distinctio nesciunt quisquam magni, dolore eligendi
-            obcaecati officiis nobis provident voluptates eveniet quis est
-            labore excepturi soluta?
-          </p> */}
+          {isLoading && (
+            <li className="flex flex-row-reverse">
+              <div className="rounded-xl p-4 bg-background shadow-md flex w-3/4">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                  <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                  <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  <span className="text-gray-500 ml-2"></span>
+                </div>
+              </div>
+            </li>
+          )}
         </ul>
 
         <section className="py-4">
@@ -159,6 +124,7 @@ export default function Chat() {
               value={input}
               placeholder="Say something..."
               onChange={handleInputChange}
+              disabled={isLoading}
             />
           </form>
         </section>
