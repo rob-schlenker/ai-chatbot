@@ -1,8 +1,8 @@
 'use client'
 
-import { useChat } from 'ai/react'
+import { useChat } from '@ai-sdk/react'
 import { Roboto } from 'next/font/google'
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 
 // If loading a variable font, you don't need to specify the font weight
 const roboto = Roboto({
@@ -24,6 +24,39 @@ export default function Chat() {
     }
   })
 
+  const [headerText, setHeaderText] = useState("Rob's A.I. Chatbot");
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
+
+  const handleMouseOverHeaderText = () => {
+    let iteration = 0;
+    
+    clearInterval(intervalRef.current!);
+    
+    intervalRef.current = setInterval(() => {
+      setHeaderText(prev => 
+        prev
+          .split("")
+          .map((letter, index) => {
+            if(index < iteration) {
+              return "Rob's A.I. Chatbot"[index];
+            }
+          
+            return letters[Math.floor(Math.random() * 26)]
+          })
+          .join("")
+      );
+      
+      if(iteration >= "Rob's A.I. Chatbot".length){ 
+        clearInterval(intervalRef.current!);
+      }
+      
+      iteration += 1 / 3;
+    }, 30);
+  }
+
+
   return (
     <div
       className="flex flex-col w-full h-screen max-h-dvh"
@@ -36,12 +69,12 @@ export default function Chat() {
       }}
     >
       <div className=" text-center text-4xl my-12 max-w-3xl mx-auto p-4">
-        <h1 className={roboto.className}>Rob's A.I. Chatbot</h1>
+        <h1 onMouseEnter={handleMouseOverHeaderText} data-value="Rob's A.I. Chatbot" className={roboto.className}>{headerText}</h1>
       </div>
       <div className="mx-auto container p-4 flex flex-col flex-grow max-w-3xl">
         <ul
           ref={chatParent}
-          className="h-2 p-4 flex-grow bg-muted/50 rounded-lg overflow-y-auto flex flex-col gap-4 bg-white border-gray-400 border-1 shadow-m"
+          className="relative h-2 p-4 flex-grow bg-muted/50 rounded-lg overflow-y-auto flex flex-col gap-4 bg-white border-gray-400 border-1 shadow-m"
         >
           {messages.length === 0 ? (
             <li className="text-gray-500 text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
