@@ -63,7 +63,7 @@ export default function Chat() {
 
   return (
     <div
-      className="flex flex-col w-full h-screen"
+      className="flex flex-col w-full h-dvh"
       style={{
         backgroundImage: 'url(/digital-6228020_1920.jpg)',
         backgroundSize: 'cover',
