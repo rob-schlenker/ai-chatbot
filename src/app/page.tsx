@@ -63,7 +63,7 @@ export default function Chat() {
 
   return (
     <div
-      className="flex flex-col w-full h-dvh"
+      className="flex flex-col w-full h-screen"
       style={{
         backgroundImage: 'url(/digital-6228020_1920.jpg)',
         backgroundSize: 'cover',
@@ -84,7 +84,7 @@ export default function Chat() {
       <div className="mx-auto container p-4 flex flex-col flex-grow max-w-3xl">
         <ul
           ref={chatParent}
-          className="relative h-2 p-4 flex-grow bg-muted/50 rounded-lg overflow-y-auto flex flex-col gap-4 bg-white border-gray-400 border-1 shadow-m"
+          className="relative p-4 flex-grow bg-muted/50 rounded-lg overflow-y-auto flex flex-col gap-4 bg-white border-gray-400 border-1 shadow-m"
         >
           {messages.length === 0 ? (
             <li className="text-gray-500 text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -136,7 +136,7 @@ export default function Chat() {
         <section className="py-4">
           <form onSubmit={handleSubmit}>
             <input
-              className="dark:bg-zinc-900 p-4 bottom-0 max-w-3xl mx-auto border border-zinc-300 dark:border-zinc-800 rounded shadow-xl w-full"
+              className="dark:bg-zinc-900 p-4 bottom-0 max-w-3xl mx-auto border border-zinc-300 dark:border-zinc-800 rounded-lg shadow-xl w-full"
               value={input}
               placeholder="Say something..."
               onChange={handleInputChange}
