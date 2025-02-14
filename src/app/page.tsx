@@ -72,7 +72,7 @@ export default function Chat() {
         minHeight: '100vh',
       }}
     >
-      <div className=" text-center text-4xl my-12 max-w-3xl mx-auto p-4">
+      <div className=" text-center text-4xl py-12 max-w-3xl mx-auto p-4">
         <h1
           onMouseEnter={handleMouseOverHeaderText}
           data-value="Rob's A.I. Chatbot"
