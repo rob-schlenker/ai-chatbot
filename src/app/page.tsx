@@ -63,13 +63,13 @@ export default function Chat() {
 
   return (
     <div
-      className="flex flex-col w-full h-dvh"
+      className="flex flex-col w-full h-dvh "
       style={{
         backgroundImage: 'url(/digital-6228020_1920.jpg)',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        minHeight: '100vh',
+        minHeight: '100%',
       }}
     >
       <div className=" text-center text-4xl py-12 max-w-3xl mx-auto p-4">
