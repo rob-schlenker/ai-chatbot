@@ -30,7 +30,7 @@ export default function Chat() {
     }
   })
 
-  const [headerText, setHeaderText] = useState("Rob's A.I. Chatbot")
+  const [headerText, setHeaderText] = useState("A.I. Chatbot")
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
 
@@ -45,7 +45,7 @@ export default function Chat() {
           .split('')
           .map((letter, index) => {
             if (index < iteration) {
-              return "Rob's A.I. Chatbot"[index]
+              return "A.I. Chatbot"[index]
             }
 
             return letters[Math.floor(Math.random() * 26)]
@@ -53,7 +53,7 @@ export default function Chat() {
           .join(''),
       )
 
-      if (iteration >= "Rob's A.I. Chatbot".length) {
+      if (iteration >= "A.I. Chatbot".length) {
         clearInterval(intervalRef.current!)
       }
 
@@ -75,7 +75,7 @@ export default function Chat() {
       <section className=" text-center text-4xl py-12 max-w-3xl mx-auto p-4">
         <h1
           onMouseEnter={handleMouseOverHeaderText}
-          data-value="Rob's A.I. Chatbot"
+          data-value="A.I. Chatbot"
           className={roboto.className}
         >
           {headerText}
